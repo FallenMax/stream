@@ -1,0 +1,69 @@
+{
+  "name": "unfinished-stream",
+  "version": "0.0.1",
+  "description": "A stream",
+  "main": "dist/index.js",
+  "author": "FallenMax <FallenMax@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "prebuild": "rm -rf dist",
+    "test": "jest --ci --coverage",
+    "coverage": "codecov",
+    "test:watch": "jest --watch",
+    "build": "tsc --project tsconfig.json",
+    "build:watch": "tsc --project tsconfig.json --incremental --tsBuildInfoFile ./tmp/.tsbuildinfo --watch",
+    "watch": "tsc --project tsconfig.json --watch",
+    "prepublishOnly": "yarn && yarn run build && yarn run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FallenMax/smart-toc.git"
+  },
+  "keywords": [
+    "stream",
+    "frp",
+    "observable"
+  ],
+  "jest": {
+    "testURL": "http://localhost/",
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "src/.*\\.test.(js|jsx|ts|tsx)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "testEnvironment": "jsdom",
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!**/*.mock.*",
+      "!**/test/**",
+      "!**/__test__/**"
+    ],
+    "coverageReporters": [
+      "lcov"
+    ],
+    "globals": {
+      "ts-jest": {
+        "diagnostics": false
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.1",
+    "codecov": "^3.7.2",
+    "jest": "^27.1.0",
+    "prettier": "^2.1.2",
+    "rollup": "^2.33.3",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "ts-jest": "^27.0.5",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.1.2"
+  }
+}
